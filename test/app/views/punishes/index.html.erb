@@ -1,0 +1,93 @@
+<div class="wrapper">
+
+  <div class="body">
+
+    <div class="content">
+
+      <!--<div class="row-fluid">-->
+
+        <!--<div class="alert alert-error">-->
+          <!--<strong>注意：</strong>-->
+          <!--<strong>云平台小组</strong>-->
+          <!--<strong>&nbsp;实验室IP有限，请大家节省IP同时用自己组的IP</strong>-->
+        <!--</div>-->
+      <!--</div>-->
+
+
+      <div class="row-fluid">
+        <div class="span12">
+          <!--<hr/>-->
+          <p></p>
+          <div class="block">
+
+            <div class="head green">
+              <div class="icon"><span class="ico-brush"></span></div>
+              <h2>云平台小组违纪列表</h2>
+
+            </div>
+
+            <div class="data-fluid">
+
+                <table cellpadding="0" cellspacing="0" width="100%" class="table table-hover">
+                <thead>
+                <tr>
+                  <th width="16%">
+                    姓名
+                  </th>
+                  <th width="16%">
+                    纬纪项
+                  </th>
+                  <th width="16%">
+                    违纪日期
+                  </th>
+                  <th width="16%">
+                    状态
+                  </th>
+                  <th width="16%">
+                    完成日期
+                  </th>
+                  <th width="20%">
+                    OPERATIONS
+                  </th>
+                </tr>
+                </thead>
+
+                  <tbody>
+                  <% @punishes.each do |punish| %>
+                      <tr>
+                        <td><%= punish.name %></td>
+                        <td><%= punish.faults %></td>
+                        <td><%= punish.fault_date %></td>
+                        <td><%= punish.status %></td>
+                        <td><%= punish.complete_date %></td>
+                        <td><%= link_to '详情', punish %>
+                        <%= link_to '编辑', edit_punish_path(punish) %>
+                        <%= link_to '删除', punish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                      </tr>
+                  <% end %>
+                  </tbody>
+
+              </table>
+            </div>
+            <hr/>
+            <%= link_to '新增纪录', new_punish_path,class:"btn btn-default" %>
+          </div>
+
+        </div>
+      </div>
+
+      <!--<div class="row-fluid">-->
+
+      <!--<div class="alert alert-success">-->
+      <!--<strong>注意：</strong>-->
+      <!--<strong>云平台小组可用IP网段： 192.168.100.120-192.168.100.179.</strong>-->
+      <!--<strong>&nbsp;实验室IP有限，请大家节省IP同时用自己组的IP</strong>-->
+      <!--</div>-->
+      <!--</div>-->
+    </div>
+
+  </div>
+
+
+</div>
+<div class="dialog" id="source" style="display: none;" title="Source"></div>

@@ -1,0 +1,2 @@
+module PunishesHelper
+end

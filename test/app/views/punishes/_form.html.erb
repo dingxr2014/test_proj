@@ -1,0 +1,71 @@
+<script>
+    $(function() {
+        $( "#datepicker" ).datepicker(
+          { dateFormat: 'yy-mm-dd'
+            });
+        $( "#datepicker1" ).datepicker(
+                { dateFormat: 'yy-mm-dd'
+                });
+    });
+</script>
+<div class="data-fluid">
+ <%= form_for(@punish) do |f| %>
+  <% if @punish.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@punish.errors.count, "error") %> prohibited this punish from being saved:</h2>
+
+        <ul>
+          <% @punish.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+      <div class="row-form">
+        <div class="span1"><%= f.label '姓名' %></div>
+        <div class="span5"> <%= f.text_field :name ,class:"validate[required]" %></div>
+      </div>
+      <div class="row-form">
+        <div class="span1"><%= f.label '违纪项' %></div>
+        <div class="span5">
+          <%= f.select :faults,
+          options_for_select(
+          [['迟到','迟到'], ['玩游戏','玩游戏'], ['看与学习无关视频','看与学习无关视频']] ),
+          { :multiple => false, :size =>1 }, class:"select"
+          %></div>
+      </div>
+      <div class="row-form">
+        <div class="span1"><%= f.label '违纪日期' %></div>
+        <div class="span5"><%= f.text_field :fault_date , id:'datepicker'%></div>
+      </div>
+
+      <div class="row-form">
+        <div class="span1"><%= f.label '状态' %></div>
+        <div class="span5"><%= f.select :status,
+                     options_for_select(
+                             [['未完成','未完成'], ['完成','完成']] ),
+                     { :multiple => false, :size =>1 }, class:"select"
+        %></div>
+      </div>
+
+      <div class="row-form">
+        <div class="span1"><%= f.label '完成日期' %></div>
+        <div class="span5">
+          <%= f.text_field :complete_date, id:'datepicker1' %>
+        </div>
+      </div>
+
+      <hr/>
+      <div class="actions">
+        <%= f.submit '提交' ,class: "btn btn-default"%>&nbsp;<%= link_to '返回', punishes_path ,class:"btn btn-default" %>
+      </div>
+      </div>
+  <% end %>
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+
+
+

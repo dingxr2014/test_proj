@@ -1,0 +1,84 @@
+<!--<div id="loader"><img src="img/loader.gif"/></div>-->
+<div class="wrapper">
+
+  <div class="body">
+
+    <div class="content">
+
+      <div class="row-fluid">
+
+        <div class="alert alert-error">
+          <strong>注意：</strong>
+          <strong>云平台小组可用IP网段： 192.168.100.120-192.168.100.179.</strong>
+          <strong>&nbsp;实验室IP有限，请大家节省IP同时用自己组的IP</strong>
+        </div>
+      </div>
+
+
+      <div class="row-fluid">
+        <div class="span12">
+          <!--<hr/>-->
+          <p></p>
+          <div class="block">
+
+            <div class="head blue">
+              <div class="icon"><span class="ico-cloud-2"></span></div>
+              <h2>云平台小组已分配IP列表</h2>
+
+            </div>
+
+            <div class="data-fluid">
+              <table cellpadding="0" cellspacing="0" width="100%" class="table table-hover">
+                <thead>
+                <tr>
+                  <th width="25%">
+                    USER
+                  </th>
+                  <th width="25%">
+                    IP
+                  </th>
+                  <th width="25%">
+                    DESCRIPTION
+                  </th>
+                  <th width="25%">
+                    OPERATIONS
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @ips.each do |ip| %>
+                    <tr>
+                      <td><%= ip.user %></td>
+                      <td><%= ip.ip %></td>
+                      <td><%= ip.description %></td>
+                      <td><%= link_to '详情', ip %> |
+                        <%= link_to '编辑', edit_ip_path(ip) %> |
+                        <%= link_to '删除', ip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
+            <hr/>
+            <%= link_to '申请IP', new_ip_path,class:"btn btn-default" %>
+          </div>
+
+        </div>
+      </div>
+
+      <!--<div class="row-fluid">-->
+
+        <!--<div class="alert alert-success">-->
+          <!--<strong>注意：</strong>-->
+          <!--<strong>云平台小组可用IP网段： 192.168.100.120-192.168.100.179.</strong>-->
+          <!--<strong>&nbsp;实验室IP有限，请大家节省IP同时用自己组的IP</strong>-->
+        <!--</div>-->
+      <!--</div>-->
+    </div>
+
+  </div>
+
+
+</div>
+<div class="dialog" id="source" style="display: none;" title="Source"></div>
+

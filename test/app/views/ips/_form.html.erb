@@ -1,0 +1,41 @@
+<!--<div class="wrapper">-->
+<!--<div class="body">-->
+
+  <!--<div class="content">-->
+    <!--<div class="data-fluid">-->
+<div class="data-fluid">
+<%= form_for (@ip) do |f| %>
+  <% if @ip.errors.any? %>
+    <div  >
+      <h4><%= pluralize(@ip.errors.count, "error") %> prohibited this ip from being saved:</h4>
+
+      <ul>
+      <% @ip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+      <div class="row-form">
+        <div class="span1"><%= f.label :user %></div>
+        <div class="span5"> <%= f.text_field :user ,class:"validate[required]" %></div>
+      </div>
+      <div class="row-form">
+        <div class="span1"><%= f.label :ip %></div>
+        <div class="span5"><%= f.text_field :ip %></div>
+      </div>
+      <div class="row-form">
+        <div class="span1"><%= f.label :description %></div>
+        <div class="span5"><%= f.text_area :description %></div>
+      </div>
+      <hr/>
+      <div class="actions">
+        <%= f.submit '提交' ,class: "btn btn-default"%>&nbsp;<%= link_to '返回', ips_path ,class:"btn btn-default" %>
+      </div>
+    </div>
+<% end %>
+<!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--</div>-->

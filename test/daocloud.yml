@@ -1,0 +1,20 @@
+image: daocloud.io/xirun/second
+
+services:
+    - echo  "This is a service"
+env:
+    - MYENV = "hello"
+
+install:
+    - echo $MYENV
+    - echo "This is an install segment"
+
+
+before_script:
+    - echo $MYENV
+    - echo "This is an before_script segment"
+    - echo "Here, we usually run scripts to prepare our test"
+
+script:
+    - echo $MYENV
+    - echo "This is an script segment"
